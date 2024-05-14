@@ -7,10 +7,10 @@ import alkewallet.model.Cliente;
 
 public class ServiceCliente {
 
-    private Map<Integer, Cliente> clientes;
+    private Map<String, Cliente> clientes;
 
     public ServiceCliente(){
-        this.clientes = new HashMap<Integer, Cliente>();
+        this.clientes = new HashMap<String, Cliente>();
     }
 
     public String crearCliente(Cliente cliente){
@@ -21,7 +21,7 @@ public class ServiceCliente {
         return "Cliente creado";
     }
 
-    public Map<Integer, Cliente>leerClientes(){
+    public Map<String, Cliente>leerClientes(){
         return this.clientes;
     }
 
