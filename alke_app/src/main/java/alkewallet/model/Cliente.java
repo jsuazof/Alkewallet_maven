@@ -4,19 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente {
-    
+
     private String nombre;
     private String apellido;
     private String rut;
     private String password;
-    List<Cuenta>cuentas;
-    
+    List<Cuenta> cuentas;
+
     public Cliente(String nombre, String apellido, String rut, String password) {
+        super();
         this.nombre = nombre;
         this.apellido = apellido;
         this.rut = rut;
         this.password = password;
-        cuentas = new ArrayList<>();
+        cuentas = new ArrayList<Cuenta>();
     }
 
     public String getNombre() {
@@ -61,10 +62,40 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente [nombre=" + nombre + ", apellido=" + apellido + ", rut=" + rut + ", password=" + password
-                + ", cuentas=" + cuentas + "]";
+
+        String resultado = new String();
+        for (int i = 0; i < cuentas.size(); i++) {
+            resultado += cuentas.get(i);
+        }
+        return "*****************************************************\n"
+                + String.format("**%15s%-10s%10s%-14s**\n", "Nombre:", nombre, "Apellido:", apellido)
+                + String.format("**%15s%-10s%10s%-14s**\n", "Password:", password, "RUT:", rut)
+                + "*****************************************************\n" + resultado
+                + "*****************************************************";
+
     }
 
-    
+    public boolean transferir(int origen, int destino, double monto) {
+        Cuenta cuentaOrigen = cuentas.get(origen);
+        Cuenta cuentaDestino = cuentas.get(destino);
+        Double montoConvertido = monto;
 
+        cuentaOrigen.retirar(monto);
+        System.out.println("Retirando: " + monto);
+        if (cuentaOrigen.getMoneda() != Moneda.CLP) {
+            montoConvertido = ((Conversor) cuentaOrigen).convertir(montoConvertido);
+            System.out.println("El monto convertido es: " + montoConvertido);
+
+        }
+        if (cuentaDestino.getMoneda() != Moneda.CLP) {
+            montoConvertido = ((Conversor) cuentaDestino).reConvertir(montoConvertido);
+            cuentaDestino.depositar(montoConvertido);
+            System.out.println("El monto convertido es: " + montoConvertido);
+            return true;
+
+        } else {
+            cuentaDestino.depositar(montoConvertido);
+            return true;
+        }
+    }
 }

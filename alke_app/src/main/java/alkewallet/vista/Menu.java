@@ -1,4 +1,4 @@
-package alkewallet.model;
+package alkewallet.vista;
 
 public class Menu {
 
