@@ -1,30 +1,54 @@
 package alkewallet.vista;
 
+import java.util.List;
+import java.util.Scanner;
+
+import alkewallet.model.Cuenta;
+
 public class Menu {
 
-    public void dibujaMenu() {
+    	static String bienvenida = """
+			*****************************************************
+			**          Bienvenido al AlkeWallet               **
+			*****************************************************""";
 
-        String menu = """
-                **
-                 1- Deposito                                
-                 2- Retiro                                  
-                 3- Saldo                                   
-                 4- Clientes                                
-                 5- Conversor de monedas                    
-                 6- Salir                                   
-                **""";
-        System.out.println(menu);
-    }
-    public void dibujaMenuConversor() {
-
-        String menuConversor = """
-                **
-                 1- Peso Chileno a Dolar                    
-                 2- Peso Chileno a Euro                     
-                 3- Salir                                   
-                **""";
-        System.out.println(menuConversor);
-    }
+	static String menu = """
+			*****************************************************
+			** 1- Depositar                                    **
+			** 2- Retirar                                      **
+			** 0- Salir                                        **
+			*****************************************************""";
+	
+	public static void printMenu(List<Cuenta> cuentas) {
+		System.out.println(bienvenida);
+		System.out.println(menu);
+		execMenu(cuentas);
+	}
+	
+	public static void execMenu(List<Cuenta> cuentas) {
+		
+		Scanner sc = new Scanner(System.in);
+		int comando = sc.nextInt();
+		
+		switch(comando) {
+		case 1:
+			System.out.println("Ingrese cuenta origen");
+			int origen = sc.nextInt();
+			System.out.println("Ingrese el monto");
+			double monto = sc.nextDouble();
+			cuentas.get(origen).depositar(monto);
+			printMenu(cuentas);
+			break;
+		case 2: 
+			System.out.println("Has seleccionado retirar");
+			printMenu(cuentas);
+			break;
+		case 0:
+            sc.close();
+			System.out.println("Has seleccionado salir");
+		}
+		
+	}
 
 }
 
