@@ -19,6 +19,9 @@ public class Cliente {
         this.password = password;
         cuentas = new ArrayList<Cuenta>();
     }
+    public void addCuenta(Cuenta cuenta) {
+        this.cuentas.add(cuenta);
+    }
 
     public String getNombre() {
         return nombre;
