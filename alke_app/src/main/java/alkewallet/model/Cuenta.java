@@ -61,7 +61,7 @@ public class Cuenta {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    void retirar(double monto) {
+    public void retirar(double monto) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

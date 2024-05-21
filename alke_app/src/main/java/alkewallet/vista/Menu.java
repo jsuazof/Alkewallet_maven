@@ -40,7 +40,11 @@ public class Menu {
                     printMenu(cuentas);
                     }
 		case 2 -> {
-                    System.out.println("Has seleccionado retirar");
+                    System.out.println("Ingresa cuenta a retirar");
+					int destino = sc.nextInt();
+					System.out.println("Ingrese el monto");
+                    double monto = sc.nextDouble();
+                    cuentas.get(destino).retirar(monto);
                     printMenu(cuentas);
                     }
 		case 0 -> {
