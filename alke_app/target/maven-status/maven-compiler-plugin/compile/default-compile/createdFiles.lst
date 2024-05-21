@@ -1,0 +1,11 @@
+alkewallet/vista/Menu.class
+alkewallet/model/CuentaRut.class
+alkewallet/model/Cuenta.class
+alkewallet/model/CuentaCorriente.class
+alkewallet/model/CuentaEuro.class
+alkewallet/model/Conversor.class
+alkewallet/model/Cliente.class
+alkewallet/servicio/ServicioCliente.class
+alkewallet/model/CuentaDolar.class
+alkewallet/model/Banco.class
+alkewallet/model/Moneda.class

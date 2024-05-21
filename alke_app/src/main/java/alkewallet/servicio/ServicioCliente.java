@@ -23,7 +23,7 @@ public class ServicioCliente {
 
     public String actualizarCliente(Cliente cliente){
         if(cliente == null){
-            return "Actulización fallida";
+            return "Actualización fallida";
         }
         clientes.put(cliente.getRut(), cliente);
         return "Cliente Actualizado";
