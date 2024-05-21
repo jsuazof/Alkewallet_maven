@@ -6,6 +6,7 @@
 /home/golden-dev/Desktop/Alkewallet_maven/alke_app/src/main/java/alkewallet/model/CuentaEuro.java
 /home/golden-dev/Desktop/Alkewallet_maven/alke_app/src/main/java/alkewallet/model/Cliente.java
 /home/golden-dev/Desktop/Alkewallet_maven/alke_app/src/main/java/alkewallet/model/Cuenta.java
+/home/golden-dev/Desktop/Alkewallet_maven/alke_app/src/main/java/alkewallet/servicio/ServicioCuenta.java
 /home/golden-dev/Desktop/Alkewallet_maven/alke_app/src/main/java/alkewallet/model/Banco.java
 /home/golden-dev/Desktop/Alkewallet_maven/alke_app/src/main/java/alkewallet/model/Conversor.java
 /home/golden-dev/Desktop/Alkewallet_maven/alke_app/src/main/java/alkewallet/model/CuentaDolar.java
