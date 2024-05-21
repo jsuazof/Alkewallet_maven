@@ -2,7 +2,7 @@ package alkewallet.model;
 
 import java.util.Random;
 
-public abstract class Cuenta {
+public class Cuenta {
     protected int ctaNumero;
     protected double saldo;
     protected Moneda moneda;
@@ -14,14 +14,7 @@ public abstract class Cuenta {
         this.saldo = 0;
     }
 
-    public abstract boolean depositar(double deposito);
-
-    public abstract boolean retirar(double retiro);
-
-    public abstract boolean verDepositar(double deposito);
-
-    public abstract boolean verRetirar(double retiro);
-
+   
     @Override
     public String toString() {
         

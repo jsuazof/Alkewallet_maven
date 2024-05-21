@@ -1,7 +1,5 @@
 package alkewallet.servicio;
 
-
-
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
@@ -22,7 +20,7 @@ public class ServicioClienteTest {
 
     @Test
     public void testCrearCliente() {
-        var resultado = servicioCliente.crearCliente(null);
+        var resultado = servicioCliente.crearCliente(cliente);
         assertEquals(resultado, "Cliente creado");
 
     }
