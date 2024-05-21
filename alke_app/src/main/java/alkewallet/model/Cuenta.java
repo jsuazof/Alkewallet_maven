@@ -65,8 +65,8 @@ public class Cuenta {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void convertir(double monto) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public double convertir(double monto) {
+        return monto * 950;
     }
 
     
