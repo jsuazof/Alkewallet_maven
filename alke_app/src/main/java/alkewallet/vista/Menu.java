@@ -47,6 +47,15 @@ public class Menu {
                     cuentas.get(destino).retirar(monto);
                     printMenu(cuentas);
                     }
+		case 3 -> {
+					System.out.println("Ingresa moneda a convertir");
+					int moneda = sc.nextInt();
+					System.out.println("Ingrese el monto");
+					double monto = sc.nextDouble();
+					cuentas.get(moneda).convertir(monto);
+					printMenu(cuentas);
+				  }
+		
 		case 0 -> {
                     sc.close();
                     System.out.println("Has seleccionado salir");
