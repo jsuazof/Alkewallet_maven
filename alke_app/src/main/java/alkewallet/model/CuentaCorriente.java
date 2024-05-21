@@ -8,18 +8,15 @@ public class CuentaCorriente extends Cuenta{
         this.numRetiro = 5;
     }
     @Override
-    public boolean depositar(double deposito) {
+    public void depositar(double deposito) {
         saldo += deposito;
-        return true;
     }
     @Override
-    public boolean retirar(double retiro) {
+    public void retirar(double retiro) {
         if (saldo >= retiro && numRetiro > 0) {
             saldo -= retiro;
             numRetiro--;
-            return true;
         }
-        return false;
     }
     public void resetRetiro(){
         numRetiro = 5;
@@ -31,10 +28,9 @@ public class CuentaCorriente extends Cuenta{
     }
     @Override
     public boolean verRetirar(double retiro) {
-        if(saldo >= retiro && numRetiro > 0){
-            return true;
-        }
-        return false;
+        return saldo >= retiro && numRetiro > 0;
     }
+
+    
     
 }

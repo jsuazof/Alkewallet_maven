@@ -2,7 +2,7 @@ package alkewallet.model;
 
 public class CuentaRut extends Cuenta {
 
-    private double maxDeposito;
+    private final double maxDeposito;
     private double depositoActual;
 
     public CuentaRut() {
@@ -12,40 +12,31 @@ public class CuentaRut extends Cuenta {
     }
 
     @Override
-    public boolean depositar(double deposito) {
+    public void depositar(double deposito) {
         if (maxDeposito < (depositoActual + deposito)) {
-            return false;
+            return;
         }
         saldo += deposito;
         depositoActual += deposito;
-        return true;
 
     }
 
     @Override
-    public boolean retirar(double retiro) {
+    public void retirar(double retiro) {
         if (saldo < retiro) {
-            return false;
+            return;
         }
         saldo -= retiro;
-        return true;
     }
 
     @Override
     public boolean verDepositar(double deposito) {
-        if(maxDeposito < (depositoActual - deposito)){
-            return false;
-        }
-        return true;
+        return maxDeposito >= (depositoActual - deposito);
     }
 
     @Override
     public boolean verRetirar(double retiro) {
-        if (saldo < retiro) {
-            return false;
-            
-        }
-        return true;
+        return saldo >= retiro;
     }
 
 }

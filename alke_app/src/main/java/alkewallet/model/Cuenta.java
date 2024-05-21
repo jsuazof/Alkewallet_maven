@@ -49,5 +49,21 @@ public class Cuenta {
         this.moneda = moneda;
     }
 
+    public void depositar(double monto) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    boolean verRetirar(double monto) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    boolean verDepositar(double monto) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    void retirar(double monto) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
     
 }

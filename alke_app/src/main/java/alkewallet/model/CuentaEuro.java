@@ -1,8 +1,12 @@
 package alkewallet.model;
 
+/**
+ *
+ * @author golden-dev
+ */
 public class CuentaEuro extends Cuenta implements Conversor {
 
-    private double maxDeposito;
+    private final double maxDeposito;
     private double depositoActual;
     public CuentaEuro(){
         super(Moneda.EUR);
@@ -10,36 +14,27 @@ public class CuentaEuro extends Cuenta implements Conversor {
         this.depositoActual = 0;
     }
     @Override
-    public boolean depositar(double deposito) {
+    public void depositar(double deposito) {
         if(maxDeposito < (depositoActual+deposito)){
-            return false;
+            return;
         }
         saldo += deposito;
         depositoActual += deposito;
-        return true;
     }
     @Override
-    public boolean retirar(double retiro) {
+    public void retirar(double retiro) {
         if(saldo < retiro*1.03){
-            return false;
+            return;
         }
         saldo -= retiro*1.03;
-        return true;
     }
     @Override
     public boolean verDepositar(double deposito) {
-        if(maxDeposito < (depositoActual+deposito))
-        {
-            return false;
-        }
-        return true;
+        return maxDeposito >= (depositoActual+deposito);
     }
     @Override
     public boolean verRetirar(double retiro) {
-        if(saldo < retiro*1.03){
-            return false;
-        }
-        return true;
+        return saldo >= retiro*1.03;
     }
     @Override
     public double convertir(double monto) {

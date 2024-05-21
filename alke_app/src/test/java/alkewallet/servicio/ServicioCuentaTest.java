@@ -39,7 +39,7 @@ public class ServicioCuentaTest {
 		double monto = 500000;
 		servicioCuenta.depositar(cuenta, monto);
 		double inicial = cuenta.getSaldo();
-		var retiro = 100000;
+		var retiro = 1000000;
 		boolean exito = servicioCuenta.retirar(cuenta, retiro);
 		var termino = cuenta.getSaldo();
 		assertFalse(exito);
