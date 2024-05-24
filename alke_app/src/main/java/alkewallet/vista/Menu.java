@@ -3,66 +3,28 @@ package alkewallet.vista;
 import java.util.List;
 import java.util.Scanner;
 
+import alkewallet.model.Cliente;
 import alkewallet.model.Cuenta;
+import alkewallet.utils.LimpiarPantalla;
 
 public class Menu {
+	Cliente cliente;
 
-    	static String bienvenida = """
-			*****************************************************
-			**          Bienvenido al AlkeWallet               **
-			*****************************************************""";
-
-	static String menu = """
-			*****************************************************
-			** 1- Depositar                                    **
-			** 2- Retirar                                      **
-			** 3- Convertir                                    **
-			** 0- Salir                                        **
-			*****************************************************""";
-	
-	public static void printMenu(List<Cuenta> cuentas) {
-		System.out.println(bienvenida);
-		System.out.println(menu);
-		execMenu(cuentas);
+	public static void main (String[] args){
+		Scanner entrada = new Scanner(System.in);
+		Menu menu = new Menu();
+		menu = menu.mainMenu(menu, entrada);
+		entrada.close();
+		System.out.println("Cerrando Alkewallet...");
 	}
-	
-	public static void execMenu(List<Cuenta> cuentas) {
-		
-		Scanner sc = new Scanner(System.in);
-		int comando = sc.nextInt();
-		
-		switch(comando) {
-		case 1 -> {
-                    System.out.println("Ingrese cuenta origen");
-                    int origen = sc.nextInt();
-                    System.out.println("Ingrese el monto");
-                    double monto = sc.nextDouble();
-                    cuentas.get(origen).depositar(monto);
-                    printMenu(cuentas);
-                    }
-		case 2 -> {
-                    System.out.println("Ingresa cuenta a retirar");
-					int destino = sc.nextInt();
-					System.out.println("Ingrese el monto");
-                    double monto = sc.nextDouble();
-                    cuentas.get(destino).retirar(monto);
-                    printMenu(cuentas);
-                    }
-		case 3 -> {
-					System.out.println("Ingresa moneda a convertir");
-					int moneda = sc.nextInt();
-					System.out.println("Ingrese el monto");
-					double monto = sc.nextDouble();
-					cuentas.get(moneda).convertir(monto);
-					printMenu(cuentas);
-				  }
-		
-		case 0 -> {
-                    sc.close();
-                    System.out.println("Has seleccionado salir");
-                    }
+
+	private Menu mainMenu(Menu menu, Scanner entrada){
+		LimpiarPantalla.limpiarConsola();
+		int selection = 0;
+		do{
+			System.out.println("Alkewallet");
+			
 		}
-		
 	}
 
 }
