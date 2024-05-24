@@ -1,35 +1,30 @@
 package alkewallet.model;
 
 import java.util.Random;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
-public class Cuenta {
-    protected int ctaNumero;
-    protected double saldo;
-    protected Moneda moneda;
+public class Cuenta implements CuentaInterface {
+    private String ctaNumero;
+    private double saldo = 0;
+    private Cliente cliente;
 
-    public Cuenta(Moneda moneda) {
-        super();
-        this.ctaNumero = new Random().nextInt(1000000) + 1000000;
-        this.moneda = moneda;
-        this.saldo = 0;
+    public Cuenta() {
+        this.ctaNumero = "CL"
+                + new Random().ints(10, 0, 10).mapToObj(Integer::toString).collect(Collectors.joining());
     }
 
-   
-    @Override
-    public String toString() {
-        
-        return String.format("**%15s%-10s%10s%12.2f  **\n", "Numero Cta:",
-                Integer.toString(ctaNumero), "Saldo:", saldo) +
-                String.format("**%15s%-10s%10s%12s  **\n", "Moneda:",
-                        moneda, "", "");
-        
+    public Cuenta(int ctaNumero, double saldo, Cliente cliente) {
+
+        this.saldo = saldo;
+        this.cliente = cliente;
     }
 
-    public int getCtaNumero() {
+    public String getCtaNumero() {
         return ctaNumero;
     }
 
-    public void setCtaNumero(int ctaNumero) {
+    public void setCtaNumero(String ctaNumero) {
         this.ctaNumero = ctaNumero;
     }
 
@@ -41,33 +36,50 @@ public class Cuenta {
         this.saldo = saldo;
     }
 
-    public Moneda getMoneda() {
-        return moneda;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setMoneda(Moneda moneda) {
-        this.moneda = moneda;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public void depositar(double monto) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    @SuppressWarnings("resource")
+    @Override
+    public void depositar(Double monto) {
+        while (!validarDeposito(monto)) {
+            System.out.println("Ingrese un monto valido");
+            try {
+                Double input = Double.parseDouble(new Scanner(System.in).next());
+                monto = input;
+            } catch (NumberFormatException e) {
+            }
+            LimpiarPantalla.limpiarConsola();
+        }
+        this.saldo += monto;
+        System.out.println();
+        System.out.printf("--------------------------------%n");
+        System.out.printf(" Deposito realizado con exito    %n");
+        System.out.printf("--------------------------------%n");
+        System.out.printf(" %-10s : %-8s        %n", "Nombre", usuario.getNombre());
+        System.out.printf(" %-10s : %-8s        %n", "N°Cuenta:", getNumeroCuenta());
+        System.out.printf(" %-10s : %-8s        %n", "saldo:", consultaSaldo());
+        System.out.printf("--------------------------------%n");
+        System.out.println();
+
     }
 
-    boolean verRetirar(double monto) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    @SuppressWarnings ("resource");
+    @Overridepublic void retirar(Double monto){
+        while(!validarRetiro(monto)){
+            System.out.println("Por favor ingrese un monto válido");
+            try{
+                Double input = Double.parseDouble(new Scanner(System.in).next());
+                monto = input;
+            }catch(NumberFormatException e ){
+            }
+            LimpiarPantalla.limpiarConsola();
+        }
 
-    boolean verDepositar(double monto) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
-
-    public void retirar(double monto) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public double convertir(double monto) {
-        return monto * 950;
-    }
-
-    
 }

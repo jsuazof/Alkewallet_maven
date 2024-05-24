@@ -45,9 +45,21 @@ public class ApiMonedas {
                 JsonObject dolar = jsonObject.getAsJsonObject("dolar");
                 JsonObject euro = jsonObject.getAsJsonObject("euro");
                 monedas.put(dolar.get("id").getAsString(), 
-                new Usd(dolar.get("id").getAsString)
+                new Usd(dolar.get("id").getAsString(),"$", "Dolares",
+                dolar.get("valor").getAsDouble()));
+                monedas.put(euro.get("id").getAsString(), 
+                new Euro(euro.get("id").getAsString(),"€", "Euros",
+                euro.get("valor").getAsDouble()));
+                
 
             }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
+    public HashMap<String, Moneda> getMonedas() {
+        return monedas;
+    }
+    
 }

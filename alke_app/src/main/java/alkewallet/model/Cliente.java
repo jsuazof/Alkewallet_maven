@@ -1,106 +1,140 @@
 package alkewallet.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import alkewallet.servicio.ServicioConversorMoneda;
+import java.util.Scanner;
+import java.util.UUID;
 
 public class Cliente {
 
+    private UUID userId;
     private String nombre;
     private String apellido;
     private String rut;
-    private String password;
-    List<Cuenta> cuentas;
+    private String email;
+    private Cuenta cuenta;
 
-    public Cliente(String nombre, String apellido, String rut, String password) {
-        super();
+    public Cliente() {
+        this.userId = UUID.randomUUID();
+        cuenta = new Cuenta();
+    }
+    public Cliente(UUID userId, String nombre, String apellido, String rut, String email) {
+        this.userId = userId;
         this.nombre = nombre;
         this.apellido = apellido;
         this.rut = rut;
-        this.password = password;
-        cuentas = new ArrayList<Cuenta>();
+        this.email = email;
+        this.cuenta = cuenta;
     }
-    public void addCuenta(Cuenta cuenta) {
-        this.cuentas.add(cuenta);
-    }
+    
 
+
+    public UUID getUserId() {
+        return userId;
+    }
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
     public String getApellido() {
         return apellido;
     }
-
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-
     public String getRut() {
         return rut;
     }
-
     public void setRut(String rut) {
         this.rut = rut;
     }
-
-    public String getPassword() {
-        return password;
+    public String getEmail() {
+        return email;
     }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmail(String email) {
+        this.email = email;
     }
-
-    public List<Cuenta> getCuentas() {
-        return cuentas;
+    public Cuenta getCuenta() {
+        return cuenta;
     }
-
-    public void setCuentas(List<Cuenta> cuentas) {
-        this.cuentas = cuentas;
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
     }
-
-    @Override
-    public String toString() {
-
-        String resultado = new String();
-        for (int i = 0; i < cuentas.size(); i++) {
-            resultado += cuentas.get(i);
+    
+    public void crearUsuario(Scanner entrada){
+        System.out.println();
+        System.out.println("Ingrese su Nombre:")
+        String nombre = entrada.next();
+        while(!validarString(nombre)){
+            System.out.println("Por favor, ingrese un nombre válido");
+            nombre = entrada.next();
         }
-        return "*****************************************************\n"
-                + String.format("**%15s%-10s%10s%-14s**\n", "Nombre:", nombre, "Apellido:", apellido)
-                + String.format("**%15s%-10s%10s%-14s**\n", "Password:", password, "RUT:", rut)
-                + "*****************************************************\n" + resultado
-                + "*****************************************************";
+        setNombre(nombre);
+        entrada.nextLine();
 
+        System.out.println("Ingrese su Apellido");
+        String apellido = entrada.next();
+        while(!validarString(apellido)){
+            System.out.println("Por favor, ingrese un apellido válido");
+            apellido = entrada.next();
+        }
+        setApellido(apellido);
+        entrada.nextLine();
+
+        System.out.println("Ingrese su email");
+        String email = entrada.next();
+        while(!validarEmail(email)){
+            System.out.println("Por favor, ingrese un email válido");
+            email = entrada.next();
+        }
+        setEmail(email);
+
+        System.out.println("Ingrese su rut");
+        String rut = entrada.next();
+        while(!validarRut(rut)){
+            System.out.println("Por favor, ingrese un rut válido");
+            rut = entrada.next();
+        }
+        setRut(rut);
+
+        LimpiarPantalla.limpiarConsola();
+
+        System.out.println();
+		System.out.printf("--------------------------------%n");
+		System.out.printf(" usuario Creado con exito       %n");
+		System.out.printf("--------------------------------%n");
+		System.out.printf(" %-10s : %-8s        %n", "Nombre", getNombre());
+		System.out.printf(" %-10s : %-8s        %n", "Email", getEmail());
+		System.out.printf(" %-10s : %-8s        %n", "Rut", getRut());
+		System.out.printf(" %-10s : %-8s        %n", "N°Cuenta:", cuenta.getNumeroCuenta());
+		System.out.printf("--------------------------------%n");
+		System.out.println();
     }
 
-    public boolean transferir(int origen, int destino, double monto) {
-        Cuenta cuentaOrigen = cuentas.get(origen);
-        Cuenta cuentaDestino = cuentas.get(destino);
-        Double montoConvertido = monto;
-
-        cuentaOrigen.retirar(monto);
-        System.out.println("Retirando: " + monto);
-        if (cuentaOrigen.getMoneda() != null) {
-            montoConvertido = ((ServicioConversorMoneda) cuentaOrigen).convertir(montoConvertido);
-            System.out.println("El monto convertido es: " + montoConvertido);
-
-        }
-        if (cuentaDestino.getMoneda() != Moneda.CLP) {
-            montoConvertido = ((ServicioConversorMoneda) cuentaDestino).reConvertir(montoConvertido);
-            cuentaDestino.depositar(montoConvertido);
-            System.out.println("El monto convertido es: " + montoConvertido);
-            return true;
-
-        } else {
-            cuentaDestino.depositar(montoConvertido);
-            return true;
-        }
+    public boolean validarEmail(String email){
+        String emailRegex = "^[\\w-+]+(\\.[\\w-]{1,62}){0,126}@[\\w-]{1,63}(\\.[\\w-]{1,62})+[\\w-]+$";
+        return email.matches(emailRegex);
     }
+    public boolean validarRut(String rut){
+        boolean validacion = false;
+        rut = rut.toUpperCase();
+        rut = rut.replace(".", "");
+        rut = rut.replace("-", "");
+        int rutAux = Integer.parseInt(rut.substring(0, rut.length() - 1));
+
+        char dv = rut.charAt(rut.length() - 1);
+
+        int m = 0, s= 1;
+        for(; rutAux !=0; rutAux /= 10){
+            s= (s + rutAux % 10 * (9 - m++ % 6))%11;
+        }
+        if (dv == (char)(s != 0 ? s + 47 : 75)){
+            validacion = true;
+        }
+        return validacion;
+    }
+   
 }
