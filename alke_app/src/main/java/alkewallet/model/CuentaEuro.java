@@ -1,10 +1,12 @@
 package alkewallet.model;
 
+import alkewallet.servicio.ServicioConversorMoneda;
+
 /**
  *
  * @author golden-dev
  */
-public class CuentaEuro extends Cuenta implements Conversor {
+public class CuentaEuro extends Cuenta implements ServicioConversorMoneda {
 
     private final double maxDeposito;
     private double depositoActual;

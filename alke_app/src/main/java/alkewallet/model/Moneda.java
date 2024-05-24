@@ -1,7 +1,9 @@
 package alkewallet.model;
 
-public enum Moneda {
-    CLP,
-    USD,
-    EUR,
+public interface Moneda{
+
+	public String getNombre();
+	public Double getValor();
+	public String getSimbolo();
+	public String getPluralName();
 }

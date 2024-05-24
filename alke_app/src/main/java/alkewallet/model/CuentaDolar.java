@@ -1,6 +1,8 @@
 package alkewallet.model;
 
-public class CuentaDolar extends Cuenta implements Conversor {
+import alkewallet.servicio.ServicioConversorMoneda;
+
+public class CuentaDolar extends ServicioConversorMoneda {
 
     private final double maxDeposito;
     private double depositoActual;

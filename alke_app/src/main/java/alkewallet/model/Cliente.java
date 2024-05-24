@@ -3,6 +3,8 @@ package alkewallet.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import alkewallet.servicio.ServicioConversorMoneda;
+
 public class Cliente {
 
     private String nombre;
@@ -85,13 +87,13 @@ public class Cliente {
 
         cuentaOrigen.retirar(monto);
         System.out.println("Retirando: " + monto);
-        if (cuentaOrigen.getMoneda() != Moneda.CLP) {
-            montoConvertido = ((Conversor) cuentaOrigen).convertir(montoConvertido);
+        if (cuentaOrigen.getMoneda() != null) {
+            montoConvertido = ((ServicioConversorMoneda) cuentaOrigen).convertir(montoConvertido);
             System.out.println("El monto convertido es: " + montoConvertido);
 
         }
         if (cuentaDestino.getMoneda() != Moneda.CLP) {
-            montoConvertido = ((Conversor) cuentaDestino).reConvertir(montoConvertido);
+            montoConvertido = ((ServicioConversorMoneda) cuentaDestino).reConvertir(montoConvertido);
             cuentaDestino.depositar(montoConvertido);
             System.out.println("El monto convertido es: " + montoConvertido);
             return true;
