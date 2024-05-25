@@ -10,6 +10,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import alkewallet.model.Moneda;
+import alkewallet.model.MonedaDolar;
+import alkewallet.model.MonedaEuro;
 
 public class ApiMonedas {
     private HashMap<String, Moneda> monedas=new HashMap<>();
@@ -22,6 +24,7 @@ public class ApiMonedas {
 
     public void GetIndicadores(){
         try{
+            @SuppressWarnings("deprecation")
             URL url = new URL("https://mindicador.cl/api");
             HttpURLConnection connection = (HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
@@ -44,11 +47,11 @@ public class ApiMonedas {
                 JsonObject jsonObject = gson.fromJson(jsonString, JsonObject.class);
                 JsonObject dolar = jsonObject.getAsJsonObject("dolar");
                 JsonObject euro = jsonObject.getAsJsonObject("euro");
-                monedas.put(dolar.get("id").getAsString(), 
-                new Usd(dolar.get("id").getAsString(),"$", "Dolares",
+                monedas.put(dolar.get("codigo").getAsString(), 
+                new MonedaDolar(dolar.get("codigo").getAsString(),"$", "Dolares",
                 dolar.get("valor").getAsDouble()));
-                monedas.put(euro.get("id").getAsString(), 
-                new Euro(euro.get("id").getAsString(),"€", "Euros",
+                monedas.put(euro.get("codigo").getAsString(), 
+                new MonedaEuro(euro.get("codigo").getAsString(),"€", "Euros",
                 euro.get("valor").getAsDouble()));
                 
 

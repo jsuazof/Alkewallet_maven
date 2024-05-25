@@ -3,6 +3,8 @@ package alkewallet.model;
 import java.util.Scanner;
 import java.util.UUID;
 
+import alkewallet.utils.LimpiarPantalla;
+
 public class Cliente {
 
     private UUID userId;
@@ -66,7 +68,7 @@ public class Cliente {
     
     public void crearUsuario(Scanner entrada){
         System.out.println();
-        System.out.println("Ingrese su Nombre:")
+        System.out.println("Ingrese su Nombre:");
         String nombre = entrada.next();
         while(!validarString(nombre)){
             System.out.println("Por favor, ingrese un nombre válido");
@@ -109,9 +111,12 @@ public class Cliente {
 		System.out.printf(" %-10s : %-8s        %n", "Nombre", getNombre());
 		System.out.printf(" %-10s : %-8s        %n", "Email", getEmail());
 		System.out.printf(" %-10s : %-8s        %n", "Rut", getRut());
-		System.out.printf(" %-10s : %-8s        %n", "N°Cuenta:", cuenta.getNumeroCuenta());
+		System.out.printf(" %-10s : %-8s        %n", "N°Cuenta:", cuenta.getCtaNumero());
 		System.out.printf("--------------------------------%n");
 		System.out.println();
+    }
+    public boolean validarString(String string) {   
+        return !string.isEmpty()&&string.matches("^[a-zA-Z]*$");
     }
 
     public boolean validarEmail(String email){

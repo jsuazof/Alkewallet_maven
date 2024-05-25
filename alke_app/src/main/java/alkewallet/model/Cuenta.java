@@ -72,8 +72,9 @@ public class Cuenta implements CuentaInterface {
 
     }
 
-    @SuppressWarnings ("resource");
-    @Override public void retirar(Double monto){
+    @SuppressWarnings ("resource")
+    @Override 
+    public void retirar(Double monto){
         while(!validarRetiro(monto)){
             System.out.println("Por favor ingrese un monto válido");
             try{
@@ -130,7 +131,7 @@ public class Cuenta implements CuentaInterface {
             Double valorDolar = 1 / monedas.getMonedas().get(tipoCambio).getValor().doubleValue();
             Double valorFinal = monto * valorDolar;
             System.out.println("El monto convertido es:"
-             + monedas.getMonedas().get(tipoCambio).getSimbolo().toString() + " " + valorFinal
+             + monedas.getMonedas().get(tipoCambio).getSimbol().toString() + " " + valorFinal
              + " "
              +monedas.getMonedas().get(tipoCambio).getPluralName().toString());
         }else{
