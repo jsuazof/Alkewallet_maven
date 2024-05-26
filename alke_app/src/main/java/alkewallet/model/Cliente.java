@@ -105,15 +105,16 @@ public class Cliente {
         LimpiarPantalla.limpiarConsola();
 
         System.out.println();
-		System.out.printf("--------------------------------%n");
-		System.out.printf(" Cliente creado con exito!      %n");
-		System.out.printf("--------------------------------%n");
+		System.out.printf("********************************%n");
+		System.out.printf("   Cliente creado con éxito!    %n");
+		System.out.printf("********************************%n");
 		System.out.printf(" %-10s : %-8s        %n", "Nombre", getNombre());
 		System.out.printf(" %-10s : %-8s        %n", "Email", getEmail());
 		System.out.printf(" %-10s : %-8s        %n", "Rut", getRut());
 		System.out.printf(" %-10s : %-8s        %n", "N°Cuenta:", cuenta.getCtaNumero());
-		System.out.printf("--------------------------------%n");
+		System.out.printf("********************************%n");
 		System.out.println();
+        System.out.println("Presiona Enter para continuar...");
     }
     public boolean validarString(String string) {   
         return !string.isEmpty()&&string.matches("^[a-zA-Z]*$");

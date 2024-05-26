@@ -2,15 +2,15 @@ package alkewallet.model;
 
 public class MonedaDolar implements Moneda {
     String nombre;
-    String simbol;
+    String simbolo;
     String pluralName;
     Double valor;
 
-    public MonedaDolar(String nombre, String simbol, String pluralName, Double valor) {
+    public MonedaDolar(String nombre, String simbolo, String pluralName, int valorDolarRedondeado) {
         this.nombre = nombre;
-        this.simbol = simbol;
+        this.simbolo = simbolo;
         this.pluralName = pluralName;
-        this.valor = valor;
+        this.valor = (double) valorDolarRedondeado;
     }
     @Override
     public String getNombre() {
@@ -21,12 +21,12 @@ public class MonedaDolar implements Moneda {
         this.nombre = nombre;
     }
     @Override
-    public String getSimbol() {
-        return simbol;
+    public String getSimbolo() {
+        return simbolo;
     }
 
-    public void setSimbol(String simbol) {
-        this.simbol = simbol;
+    public void setSimbolo(String simbolo) {
+        this.simbolo = simbolo;
     }
     @Override
     public String getPluralName() {

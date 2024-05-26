@@ -21,13 +21,26 @@ public class Menu {
 		LimpiarPantalla.limpiarConsola();
 		int selection = 0;
 		do {
-			System.out.println("Alkewallet");
-			System.out.println("(1) Crear Cliente");
-			System.out.println("(2) Ver Saldo");
-			System.out.println("(3) Depositar o girar");
-			System.out.println("(4) Convertir Moneda");
-			System.out.println("(5) Salir");
-			System.out.println("Selecione una opción: ");
+			String bienvenida = """
+				*****************************************************
+				**    **  Bienvenido  **  ** AlkeWallet Bank **    **
+				*****************************************************""";
+			
+			String menuScr = """
+				*****************************************************
+				**                    Opciones                     **
+				*****************************************************
+				** 1 <- Crear Cliente                              **
+				** 2 <- Ver Saldo                                  **
+				** 3 <- Depositar o girar                          **
+				** 4 <- Convertir Moneda                           **
+				** 5 <- Salir                                      **
+				*****************************************************
+				** Seleccione una opción y presione enter:         **
+				*****************************************************""";
+			System.out.println(bienvenida);	
+			System.out.println(menuScr);
+			
 
 			try {
 				selection = entrada.nextInt();
@@ -62,11 +75,14 @@ public class Menu {
 				default:
 					System.out.println("Ingrese una opción válida");
 			}
-			System.out.println("Presiona \"c\" y luego (enter) para continuar");
-			entrada.next().charAt(0);
+			
+			entrada.nextLine();
+        while (!entrada.nextLine().isEmpty()) {
+           
+        }
 			LimpiarPantalla.limpiarConsola();
 
-		} while (selection != 5);
+		} while (selection != 5 );
 		return menu;
 	}
 
@@ -75,11 +91,20 @@ public class Menu {
 		int selection = 0;
 
 		do {
-			System.out.println("Bienvenido al submenu");
-			System.out.println("(1) Depositar");
-			System.out.println("(2) Retirar");
-			System.out.println("(5) Regresar");
-			System.out.println("Selecione una opción: ");
+			String menuTra = """
+				*****************************************************
+				**        Bienvenido al menu de utilidades         **
+				*****************************************************
+				** 1 <- Depositar                                    **
+				** 2 <- Retirar o girar                              **
+				** 3 <- Convertir Moneda                             **
+				** 5 <- Salir                                        **
+				*****************************************************
+				** Seleccione una opción y presione enter:         **
+				*****************************************************""";
+			
+			System.out.println(menuTra);
+			
 
 			try {
 				selection = entrada.nextInt();
@@ -125,10 +150,13 @@ public class Menu {
 				default:
 					System.out.println("Ingrese una opción válida");
 			}
-			System.out.println("Presiona \"c\" y luego (enter) para continuar");
-			entrada.next().charAt(0);
+			entrada.nextLine();
+        while (!entrada.nextLine().isEmpty()) {
+           
+        }
 			LimpiarPantalla.limpiarConsola();
-		} while (selection != 5);
+
+		} while (selection != 5 );
 		return menu;
 	}
 

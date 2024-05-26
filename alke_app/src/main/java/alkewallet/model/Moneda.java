@@ -4,6 +4,6 @@ public interface Moneda{
 
 	String getNombre();
 	Double getValor();
-	String getSimbol();
+	String getSimbolo();
 	String getPluralName();
 }

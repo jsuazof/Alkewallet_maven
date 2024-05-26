@@ -26,7 +26,7 @@ public class MonedaEuroTest {
     @Test
     public void testGetSimbol() {
         MonedaEuro euro = new MonedaEuro("MonedaEuro", "€", "Euros", 1.0);
-        assertEquals("€", euro.getSimbol());
+        assertEquals("€", euro.getSimbolo());
     }
 
     @Test
@@ -54,6 +54,6 @@ public class MonedaEuroTest {
     public void testSetSimbol() {
         MonedaEuro euro = new MonedaEuro("MonedaEuro", "€", "Euros", 1.0 );
         euro.setSimbol("€");
-        assertEquals("€", euro.getSimbol());
+        assertEquals("€", euro.getSimbolo());
     }
 }

@@ -1,8 +1,9 @@
 package alkewallet.model;
 
 public interface CuentaInterface {
-    public void retirar(Double cantidad);
-    public double consultaSaldo();
-    public void depositar(Double cantidad);
-
+    void retirar(Double cantidad);
+    double consultaSaldo();
+    int consultaSaldoRedondeado();
+    void depositar(Double cantidad);
 }
+
