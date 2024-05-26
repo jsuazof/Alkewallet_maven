@@ -46,8 +46,8 @@ public class ApiMonedas {
                 double valorEuro = euro.get("valor").getAsDouble();
 
                 // Redondear los valores a enteros
-                int valorDolarRedondeado = (int) Math.round(valorDolar);
-                int valorEuroRedondeado = (int) Math.round(valorEuro);
+                double valorDolarRedondeado = (double) Math.round(valorDolar);
+                double valorEuroRedondeado = (double) Math.round(valorEuro);
 
                 monedas.put(dolar.get("codigo").getAsString(), 
                         new MonedaDolar(dolar.get("codigo").getAsString(), "$", "Dolares", 

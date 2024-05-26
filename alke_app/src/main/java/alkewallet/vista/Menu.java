@@ -95,10 +95,9 @@ public class Menu {
 				*****************************************************
 				**        Bienvenido al menu de utilidades         **
 				*****************************************************
-				** 1 <- Depositar                                    **
-				** 2 <- Retirar o girar                              **
-				** 3 <- Convertir Moneda                             **
-				** 5 <- Salir                                        **
+				** 1 <- Depositar                                  **
+				** 2 <- Retirar o girar                            **
+				** 3 <- Salir                                      **
 				*****************************************************
 				** Seleccione una opción y presione enter:         **
 				*****************************************************""";
@@ -145,7 +144,7 @@ public class Menu {
 						System.out.println("Debe crear un cliente");
 					}
 					break;
-				case 5:
+				case 3:
 					return menu.mainMenu(menu, entrada);
 				default:
 					System.out.println("Ingrese una opción válida");
@@ -156,7 +155,7 @@ public class Menu {
         }
 			LimpiarPantalla.limpiarConsola();
 
-		} while (selection != 5 );
+		} while (selection != 3 );
 		return menu;
 	}
 

@@ -6,11 +6,11 @@ public class MonedaDolar implements Moneda {
     String pluralName;
     Double valor;
 
-    public MonedaDolar(String nombre, String simbolo, String pluralName, int valorDolarRedondeado) {
+    public MonedaDolar(String nombre, String simbolo, String pluralName, double valorDolarRedondeado) {
         this.nombre = nombre;
         this.simbolo = simbolo;
         this.pluralName = pluralName;
-        this.valor = (double) valorDolarRedondeado;
+        this.valor = valorDolarRedondeado;
     }
     @Override
     public String getNombre() {

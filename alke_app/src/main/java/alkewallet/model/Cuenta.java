@@ -134,8 +134,8 @@ public class Cuenta implements CuentaInterface {
                 return;
             }
             if (monedas.getMonedas().containsKey(tipoCambio)) {
-                Double valorDolar = 1 / monedas.getMonedas().get(tipoCambio).getValor().doubleValue();
-                Double valorFinal = monto * valorDolar;
+                Double valorDolar = (1 / monedas.getMonedas().get(tipoCambio).getValor().doubleValue());
+                Double valorFinal = (monto * valorDolar);
                 System.out.println("El monto convertido es:"
                         + monedas.getMonedas().get(tipoCambio).getSimbolo().toString() + " " + Math.round(valorFinal)
                         + " "
