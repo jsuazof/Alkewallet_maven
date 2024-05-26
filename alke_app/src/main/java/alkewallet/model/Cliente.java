@@ -18,7 +18,7 @@ public class Cliente {
         this.userId = UUID.randomUUID();
         cuenta = new Cuenta();
     }
-    public Cliente(UUID userId, String nombre, String apellido, String rut, String email) {
+    public Cliente(UUID userId, String nombre, String apellido, String rut, String email, Cuenta cuenta) {
         this.userId = userId;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -66,7 +66,7 @@ public class Cliente {
         this.cuenta = cuenta;
     }
     
-    public void crearUsuario(Scanner entrada){
+    public void crearCliente(Scanner entrada){
         System.out.println();
         System.out.println("Ingrese su Nombre:");
         String nombre = entrada.next();
@@ -106,7 +106,7 @@ public class Cliente {
 
         System.out.println();
 		System.out.printf("--------------------------------%n");
-		System.out.printf(" usuario Creado con exito       %n");
+		System.out.printf(" Cliente creado con exito!      %n");
 		System.out.printf("--------------------------------%n");
 		System.out.printf(" %-10s : %-8s        %n", "Nombre", getNombre());
 		System.out.printf(" %-10s : %-8s        %n", "Email", getEmail());

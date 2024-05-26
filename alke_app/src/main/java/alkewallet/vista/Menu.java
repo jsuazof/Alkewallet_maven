@@ -38,14 +38,14 @@ public class Menu {
 			switch (selection) {
 				case 1:
 					this.cliente = new Cliente();
-					cliente.crearUsuario(entrada);
+					cliente.crearCliente(entrada);
 					cliente.getCuenta().setCliente(cliente);
 					break;
 				case 2:
 					if (this.cliente != null) {
 						System.out.println("Su saldo es : $" + " " + cliente.getCuenta().consultaSaldo());
 					} else {
-						System.out.println("Debe crear un usuario");
+						System.out.println("Debe crear un cliente");
 					}
 					break;
 				case 3:
@@ -54,7 +54,7 @@ public class Menu {
 					if (this.cliente != null) {
 						cliente.getCuenta().ConvertirMoneda(entrada);
 					} else {
-						System.out.println("Debe crear un usuario");
+						System.out.println("Debe crear un cliente");
 					}
 					break;
 				case 5:
@@ -98,7 +98,7 @@ public class Menu {
 							System.out.println("Ingrese un monto válido");
 						}
 					} else {
-						System.out.println("Debe crear un usuario");
+						System.out.println("Debe crear un cliente");
 					}
 					break;
 				case 2:
@@ -117,7 +117,7 @@ public class Menu {
 							System.out.println("No tiene saldo para retirar");
 						}
 					} else {
-						System.out.println("Debe crear un usuario");
+						System.out.println("Debe crear un cliente");
 					}
 					break;
 				case 5:
